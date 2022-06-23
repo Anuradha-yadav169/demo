@@ -1,0 +1,39 @@
+<!DOCTYPE html>   
+<html> 
+<h1>Adresses#index</h1>
+<body>   
+ <div class="container">    
+      <div>   
+        <%= link_to 'Add address', new_address_path %>   
+      </div>   
+      <br>   
+    <table border="2">   
+      <thead>   
+      <tr>   
+        <th>Name</th>   
+        <th>Address1</th>   
+        <th>Address2</th>   
+        <th>Pincode</th>   
+      </tr>   
+      </thead>   
+      <tbody>   
+      <% @addresses.each do |address| %>   
+          <tr>   
+            <td><%= address.name %></td>   
+            <td><%= address.address1 %></td>
+            <td><%= address.address2 %></td>
+            <td><%= address.pincode %></td> 
+               <div>   
+               <td>   
+                <%= link_to 'Show', address_path(address) %>   
+                <%= link_to 'Edit', edit_address_path(address) %>   
+                <%= link_to 'Delete', address_path(address), method: :delete %>   
+              </div>   
+            </td>   
+          </tr>   
+      <% end %>   
+      </tbody>   
+    </table>   
+    </div>   
+  </body>   
+</html>  
