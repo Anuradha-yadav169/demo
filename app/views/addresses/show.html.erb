@@ -1,27 +1,20 @@
-<h1>Adresses#show</h1>
-<p>Find me in app/views/adresses/show.html.erb</p>
-<div class="container">        
-        <h3>Add a address</h3>  
-        
-
-            <div>   
-              <label>Name</label>   
-              <%= @address.name %>   
-            </div>  
-            <div>   
-              <label>Address1</label>   
-              <%= @address.address1 %>   
-            </div> 
-            <div>   
-              <label>Address2</label>   
-              <%= @address.address2 %>   
-            </div> 
-            <div>   
-              <label>Pincode</label>   
-              <%= @address.pincode %>   
-            </div> 
-        
-        <%= link_to 'Back', { controller: 'addresses', action: 'index'} %>   
-      </div>  
-    
+<div class="container">
+  <h2>Your Address Details</h2>
+  <div>
+    <label>Name</label>
+    <%= @address.name %>
+  </div>
+  <div>
+    <label>Address1</label>
+    <%= @address.address1 %>
+  </div>
+  <div>
+    <label>Address2</label>
+    <%= @address.address2 %>
+  </div>
+  <div>
+    <label>Pincode</label>
+    <%= @address.pincode %>
+  </div>
+  <%= link_to 'Back', { controller: 'addresses', action: 'index'} %>   
 </div>
