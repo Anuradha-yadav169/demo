@@ -1,21 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Myapp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application','data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% if current_user %>
-    <%= link_to current_user.email, edit_user_registration_path %>
-    <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-    <% else %>
-    <%= link_to "Log in", new_user_session_path %>
-    <%= link_to "Register", new_user_registration_path %>
-    <% end %>
-    <%= yield %>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+
+        <li class="nav-item">
+          <% if current_user %>
+          <a <%= link_to current_user.email, edit_user_registration_path %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete %> >
+          </a>
+          <% else %>
+          <a <%= link_to "Log in", new_user_session_path %>
+            <%= link_to "Register", new_user_registration_path %> >
+              
+          </a>
+          <% end %>
+        </li>
+      </div>
+    </nav>
+    <main role="main" class="container">
+      <h1>Bootstrap starter template</h1>
+      <%= yield %>
+    </main>
   </body>
 </html>

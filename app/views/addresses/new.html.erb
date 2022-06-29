@@ -1,0 +1,34 @@
+<h1>Adresses#new</h1>
+<p>Find me in app/views/adresses/new.html.erb</p>
+<div class="container">
+  <%= form_for @address, url: {action: :create} do |f| %>
+  <div>
+    <h3>Add Addresses</h3>
+  </div>
+  <div>
+    <p>
+      <%= "<div>#{@address.errors.full_messages.first}</div>".html_safe if @address.errors.any? %>
+      <div>
+        <label> Name</label>
+        <%= f.text_field :name %>   
+      </div>
+      <div>
+        <label>Address1</label>
+        <%= f.text_field :address1 %>   
+      </div>
+      <div>
+        <label>Address2</label>
+        <%= f.text_field :address2 %>
+      </div>
+      <div>
+        <label>Pincode</label>
+        <%= f.text_field :pincode %>
+      </div>
+    </p>
+  </div>
+  <div>
+    <%= link_to 'Back', { controller: 'addresses', action: 'index'} %>
+    <%= f.submit 'Create address' %>   
+  </div>   
+  <% end %>   
+</div>  
