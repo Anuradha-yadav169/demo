@@ -1,45 +1,29 @@
-<h1>Adresses#edit</h1>
-<p>Find me in app/views/adresses/edit.html.erb</p>
-<div class="container">   
-  
-<%= form_for @address, url: {action: :update} do |f| %>   
-     
-   <h3>Add a address</h3>   
- <%= "<div>#{@address.errors.full_messages.first}</div>".html_safe if @address.errors.any? %>   
-    <p>   
-  
-     <div>   
-            <label>Name</label>   
-            <%= f.text_field :name %>   
-     </div>   
-  
-     <div>   
-            <label>Address1</label>   
-            <%= f.text_field :address1 %>   
-     </div> 
-
-     <div>   
-            <label>Address2</label>   
-            <%= f.text_field :address2 %>   
-     </div>   
-        
-     <div>   
-            <label>pincode</label>   
-            <%= f.text_field :pincode %>   
-     </div>   
-  
-      </p>   
-   <div>   
-      <%= link_to 'Back', { controller: 'addresses', action: 'index'} %>   
-      <%= f.submit 'Update ' %>   
-    </div>   
-<% end %>   
+<div class="container">
+       <%= form_for @address, url: {action: :update} do |f| %>
+       <h2>Edit address information</h2>
+       <%= "<div>#{@address.errors.full_messages.first}</div>".html_safe if @address.errors.any? %>
+       <p>
+              <div>
+                     <label>Name</label>   
+                     <%= f.text_field :name %>   
+              </div>
+              <div>   
+                     <label>Address1</label>   
+                     <%= f.text_field :address1 %>   
+              </div>
+              <div>
+                     <label>Address2</label>
+                     <%= f.text_field :address2 %>   
+              </div>
+              <div>
+                     <label>pincode</label>
+                     <%= f.text_field :pincode %>
+              </div>
+       </p>
+       <div>
+              <%= link_to 'Back', { controller: 'addresses', action: 'index'} %>
+              <%= f.submit 'Update ' %>
+       
+       </div>
+       <% end %>   
 </div>  
-
-
-
-
-
-
-
-
