@@ -1,20 +1,24 @@
 <div class="container">
   <h2>Your Address Details</h2>
-  <div>
-    <label>Name</label>
-    <%= @address.name %>
-  </div>
-  <div>
-    <label>Address1</label>
-    <%= @address.address1 %>
-  </div>
-  <div>
-    <label>Address2</label>
-    <%= @address.address2 %>
-  </div>
-  <div>
-    <label>Pincode</label>
-    <%= @address.pincode %>
-  </div>
+  <table class="table" style="width:500px;">
+    <tbody>
+      <tr>
+        <th>Name</th>
+        <td><%= @address.name %></td>
+      </tr>
+      <tr>
+        <th>Address1</th>
+        <td><%= @address.address1 %></td>
+      </tr>
+      <tr>
+        <th>Address2</th>
+        <td><%= @address.address2 %></td>
+      </tr>
+      <tr>
+        <th>Pincode</th>
+        <td><%= @address.pincode %></td>
+      </tr>
+    </tbody>
+  </table>
   <%= link_to 'Back', { controller: 'addresses', action: 'index'} %>   
 </div>
