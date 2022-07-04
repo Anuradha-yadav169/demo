@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_22_080042) do
+ActiveRecord::Schema.define(version: 2022_06_21_095203) do
+
 
  # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
 
   create_table "addresses", force: :cascade do |t|
     t.string "name"
@@ -84,6 +84,4 @@ ActiveRecord::Schema.define(version: 2022_06_22_080042) do
   add_foreign_key "cart_items", "users"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
-  add_foreign_key "orders", "users"
-  add_foreign_key "products", "users"
 end

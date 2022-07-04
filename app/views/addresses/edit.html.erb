@@ -1,29 +1,30 @@
 <div class="container">
-       <%= form_for @address, url: {action: :update} do |f| %>
-       <h2>Edit address information</h2>
-       <%= "<div>#{@address.errors.full_messages.first}</div>".html_safe if @address.errors.any? %>
-       <p>
-              <div>
-                     <label>Name</label>   
-                     <%= f.text_field :name %>   
-              </div>
-              <div>   
-                     <label>Address1</label>   
-                     <%= f.text_field :address1 %>   
-              </div>
-              <div>
-                     <label>Address2</label>
-                     <%= f.text_field :address2 %>   
-              </div>
-              <div>
-                     <label>pincode</label>
-                     <%= f.text_field :pincode %>
-              </div>
-       </p>
-       <div>
-              <%= link_to 'Back', { controller: 'addresses', action: 'index'} %>
-              <%= f.submit 'Update ' %>
-       
-       </div>
-       <% end %>   
-</div>  
+  <%= form_for @address, url: {action: :update} do |f| %>
+  <h2>Edit address information</h2>
+  <%= "<div>#{@address.errors.full_messages.first}</div>".html_safe if @address.errors.any? %>
+  <table class="table table-hover" style="width: 500px;">
+    <tbody>
+      <tr>
+        <th>Name</th>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <th>Address1</th>
+        <td><%= f.text_field :address1 %></td>
+      </tr>
+      <tr>
+        <th>Address2</th>
+        <td><%= f.text_field :address2 %></td>
+      </tr>
+      <tr>
+        <th>Pincode</th>
+        <td><%= f.text_field :pincode %></td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <%= link_to 'Back', { controller: 'addresses', action: 'index'} %>
+    <%= f.submit 'Update ' %>
+  </div>
+  <% end %>   
+</div>
