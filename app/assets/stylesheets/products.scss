@@ -1,0 +1,12 @@
+// Place all the styles related to the products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.card-body {
+  border: 1px solid #d2d2dc;
+  border-radius: 0
+}
+
+p:hover, h3:hover, a:hover {
+  background-color: LightGray;
+}
