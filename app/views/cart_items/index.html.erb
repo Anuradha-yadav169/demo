@@ -1,25 +1,26 @@
-<h1>CartItems#index</h1>
-<p>Find me in app/views/cart_items/index.html.erb</p>
- <table id="cart_items">
-   <tr>
-     <th>Product</th>
-     <th>Qty</th>
-     <th class="price">Unit Price</th>
-     <th class="price">Full Price</th>
-   </tr>
+<p id="notice"><%= notice %></p>
 
-  <% for item in @cart_item.products %>
-    <tr class="<%= cycle :odd, :even %>">
-       <td><%=h product.name %></td>
-       <td class="qty"><%= item.quantity %></td>
-       <td class="price"><%= gbp(item.unit_price) %></td>
-       <td class="price"><%= gbp(item.full_price) %></td>
+<h1>Cart Items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product</th>
     </tr>
-   <% end %>
- <tr>
+  </thead>
 
-  <td class="total price" colspan="4">
-    Total: <%= gbp(@cart_.total_price) %>
-  </td>
-  </tr>
-  </table>
+  <tbody>
+    <% @cart_items.each do |cart_item| %>
+      <tr>
+        <td><%= cart_item.product_id %></td>
+        <td><%= link_to 'Show', line_item %></td>
+        <td><%= link_to 'Edit', edit_line_item_path(line_item) %></td>
+        <td><%= link_to 'Destroy', cart_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cart Item', new_cart_item_path %>
