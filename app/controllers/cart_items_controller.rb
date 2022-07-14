@@ -97,18 +97,11 @@ class CartItemsController < ApplicationController
   end
 
   def show
-    @cart_item = current_cart
-    # @product = Product.all
-    # @cart_item = @cart_item.add_product(@product)
+    @cart = current_cart
+    #@cart_item = CartItem.find(params[:id])
+    #@cart_item = CartItem.product_id.find_by_id(params[:id]) 
 
-    # # if @cart_item.save   
-    #   redirect_to cart_item_params
-    # else   
-    #   flash[:error] = 'Failed to edit address!'   
-    #   render @product  
-    # end   
-    # @cart_item = CartItem.find(params[:id])  
-    # @cart_item = CartItem.find params.require(:cart_item_id) 
+    # @cart_item = @cart_item.add_product(@product)
   end
 
   def new
@@ -118,9 +111,41 @@ class CartItemsController < ApplicationController
   def edit
   end
 
+  def add_product(product_id)
+    # product_id = Product.find(product_id)
+    # item = CartItem.find_by(product_id: product_id)
+    cart =  @cart_item = CartItem.all
+    item = CartItem.where('product_id = ?', product_id)
+    if item
+        # increase the quantity of product in cart
+        # item.Quantity + 1
+        cart.Quantity+1
+
+        # @cart_item.Quantity + 1
+        save
+    else
+        # product does not exist in cart
+        product = Product.find(product_id)
+        items << product
+    end
+    save
+  end
+
+  # def create
+  #   byebug
+  #   @cart_item = @cart_item.add_product(cart_item_params)
+  #   if @cart_item.save
+  #     redirect_to cart_item_path
+  #   else
+  #     flash[:error] = 'There was a problem adding this item to your cart.'
+  #     redirect_to @product
+  #   end
+  # end
+
   def create
-    @product = Product.find(params[:product_id])
-    @cart_item = @cart_item.add_product(@product)
+    @product = Product.all
+    # @cart_item = @cart_item.add_product(@product)
+    @cart_item = add_product(@product)
 
     if @cart_item.save   
       redirect_to @cart_item
@@ -134,6 +159,11 @@ class CartItemsController < ApplicationController
   current_cart.add_product(params[:product_id])
   # redirect to shopping cart or whereever
   end
+
+    def add_to_cart
+      current_cart.add_product(params[:product_id])
+      redirect_to cart_items_path(current_cart.id)
+   end
 
   # def update
   #   respond_to do |format|
@@ -155,10 +185,10 @@ class CartItemsController < ApplicationController
 
   private
     def set_cart_item
-      @cart_item = CartItem.find(params[:id])
+      @cart_item = CartItem.all
     end
 
     def cart_item_params
-      params.require(:cart_item).permit(:product_id)
+      params.permit(:product_id, :user_id)
     end
 end

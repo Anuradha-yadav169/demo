@@ -24,11 +24,22 @@ class ApplicationController < ActionController::Base
       @current_cart ||= CartItem.find(session[:cart_item_id])
     end
     if session[:cart_item_id].nil?
-    @current_cart = CartItem.create!
-    session[:cart_item_id] = @current_cart.id
+    @current_cart = CartItem.new(cart_item_params)
+    # @current_cart = CartItem.create!
+    session[:cart_id] = @current_cart.id
   end
   @current_cart
   end 
+
+  # def current_cart
+  #    @cart_item.add_product(cart_item_params)
+  #   if @cart_item.save
+  #     redirect_to cart_item_path
+  #   else
+  #     flash[:error] = 'There was a problem adding this item to your cart.'
+  #     redirect_to @product
+  #   end
+  # end
  
 
   # def initialize_session
@@ -65,7 +76,6 @@ class ApplicationController < ActionController::Base
       
 
  
-  private
  
   def set_cart
     @cart_item = CartItem.find(session[:cart_item_id])
@@ -73,6 +83,8 @@ class ApplicationController < ActionController::Base
     @cart_item= CartItem.create
     session[:cart_item_id] = @cart_item.id
   end
-
+  # def cart_item_params
+  #   params.require(:cart_item).permit(:product_id, :user_id)
+  # end
 
 end
