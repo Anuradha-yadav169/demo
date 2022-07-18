@@ -12,5 +12,9 @@
   <div>
     <%= link_to 'Back', { controller: 'products', action: 'index'} %>
   </div> 
+  <div>
+
+  <%= link_to "Add To Cart", cart_items_path(@product.id), method: :post %>
+  </div>
 </div>
 </center>

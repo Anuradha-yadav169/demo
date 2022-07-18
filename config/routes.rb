@@ -1,15 +1,49 @@
 Rails.application.routes.draw do
 
-  # get 'cart_items/index'
-  # get 'cart_items/show'
+  # get 'cart_items#index'
+  # get '/cart_items/:id', to: 'cart_items#show'
+  # get '/cart_items/:id', to: 'cart_items#index'
+  # get '/cart_items/:id', to: 'cart_items#show', as: 'cart_items'
+  # get '/cart_items/:id', to: 'cart_items#index', as: 'cart_items'
+
+
+  #get 'cart_items#show'
   # get 'cart_items/new'
   # get 'cart_items/create'
-  resources :addresses  
+  resources :addresses 
+  #resources :cart_items
+
+  # get 'cart_items/index' => 'cart_items#index'
+  # get 'cart_items/show' => 'cart_items#show'
+
+  # get 'cart_items/index', to:'cart_items/index'
+  # get 'cart_items/show', to:'cart_items/show'
   
   root 'home#index'
-  resources :products
+  # resources :products
 
-  post'cart_items/create'
+  resources :products 
+  resources :cart_items, only: [:show, :destroy]
+
+
+  # resources :products do
+  #   resources :cart_items, only: [:index, :new, :create]
+  # end
+  # resources :cart_items, only: [:show]
+
+
+  post '/cart_items/:product_id' => 'cart_items#create', :as => 'cart_items'
+  # get '/cart_items/:product_id' => 'cart_items#show', :as => 'cart_items'
+  # get '/cart_items/:product_id' => 'cart_items#index', :as => 'cart_items'
+  
+  
+  
+
+  # post'cart_items/create'
+
+  # line_item_path GET  /line_items/1     line_items#show
+  
+  # POST  /cart_items/:cart_items_id/
 
 
   # resources :cart_items 
@@ -27,6 +61,6 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'     
   end
 
-  get 'cart_items/:id' => "cart_items#show", as: "cart_items"
-  delete 'cart_items/:id' => "cart_items#destroy"
+  # get 'cart_items/:id' => "cart_items#show", as: "cart_items"
+  # delete 'cart_items/:id' => "cart_items#destroy"
 end

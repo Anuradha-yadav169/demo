@@ -1,17 +1,14 @@
 <p id="notice"><%= notice %></p>
-<h1>CartItems#show</h1>
-<p>Find me in app/views/cart_items/show.html.erb</p>
-<h2>Cart show</h2>
-
-
-<p>
-  <strong>Product:</strong>
-  <%= @cart_item.product_id %>
-</p>
-<div>
-<%= link_to 'Back', { controller: 'products', action: 'index'} %>   
+<h1>Products in cart items</h1>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h4><%= @cart_item.product.name  %></h4>
+    <p class="card-text"> <%= @cart_item.product.price %>  </p>
+    <p class="card-text"> <%= @cart_item.product.description %>  </p>
+    <p class="card-text"> <%= image_tag(@cart_item.product.image, width:200) if @cart_item.product.image.attached? %> </p>
+  </div>
+  <div>
+    <%= link_to 'Back', { controller: 'products', action: 'index'} %>
+    <%= link_to 'Delete', @product_items, method: :delete, data: {confirm: 'You sure?'} %>
+  </div>
 </div>
-
-
- <%= @cart_item.product_id %>
-

@@ -14,13 +14,10 @@
         <p class="card-text"> <%= product.description %>  </p>
         <p class="card-text"> <%= image_tag(product.image, width:200) if product.image.attached? %> 
         </p>
-
-         <p class="card-text">
-          <%= link_to 'add to cart', {controller: 'cart_items', :action => :create}, :method => :post %>
-        </p>
-
-
-
+        <div>
+         <%= link_to "add To Cart", cart_items_path(product.id), method: :post %>
+         </div>
+      
 
         <a><%= link_to 'Show', product_path(product) %>   
           <%= link_to 'Edit', edit_product_path(product) %>   

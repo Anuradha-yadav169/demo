@@ -14,8 +14,6 @@ class ProductsController < ApplicationController
 
   def create   
     @product = current_user.products.new(product_params) 
-    #@cart_item = @cart_item.add_product(@product)
-    # @product = current_user.products.image.attach(params[:image])  
     if @product.save   
       flash[:notice] = 'Product added!'   
       redirect_to root_path   
@@ -50,8 +48,6 @@ class ProductsController < ApplicationController
       render :destroy   
     end   
   end 
-
-
 
   private 
 
