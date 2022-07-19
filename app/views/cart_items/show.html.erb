@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+<h1>Products in cart items</h1>
+<div>
+  <%= @cart_item.Quantity %>
+</div>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h4><%= @cart_item.product.name  %></h4>
+    <p class="card-text"> <%= @cart_item.product.price %>  </p>
+    <p class="card-text"> <%= image_tag(@cart_item.product.image, width:200) if @cart_item.product.image.attached? %> </p>
+  </div>
+  <div>
+    <%= link_to 'Back to Product', { controller: 'products', action: 'index'} %><br>
+    <%= link_to 'Remove from cart', @product_items, method: :delete, data: {confirm: 'You sure?'} %>
+  </div>
+</div>

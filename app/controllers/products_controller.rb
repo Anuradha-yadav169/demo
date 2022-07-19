@@ -1,4 +1,5 @@
-class ProductsController < ApplicationController  
+class ProductsController < ApplicationController 
+
   def index   
     @products = current_user.products 
   end
@@ -27,7 +28,7 @@ class ProductsController < ApplicationController
   end   
 
   def update   
-    @product = current_user.products.find(params[:id]) 
+    @product = current_user.products.find(params[:id])   
     if @product.update_attributes(product_params)   
       flash[:notice] = 'Product updated!'   
       redirect_to root_path   
@@ -46,7 +47,7 @@ class ProductsController < ApplicationController
       flash[:error] = 'Failed to delete this product!'   
       render :destroy   
     end   
-  end  
+  end 
 
   private 
 
